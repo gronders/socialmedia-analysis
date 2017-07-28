@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+	<style type="text/css">
+	body
+	{
+		background-color:#6CADDE;
+	}
+	</style>
+	<body>
+	<img src="/static/KeyBank_logo.png" style="width:230px;height:50px;">
+	<a><h2>Tweets</h2></a>
+	<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Tweet</th>
+	</tr>
+	{% for k in range(0,length) %}
+	<tr>
+		<td><a href="http://127.0.0.1:4000/result/{{tweetObjsArray[k].tweet}}" />{{tweetObjsArray[k].username}}</td>
+		<td>{{tweetObjsArray[k].tweet}}</td>
+	</tr>
+	{% endfor %}
+	</body>
+</html>

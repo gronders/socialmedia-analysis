@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+	<style type="text/css">
+	body
+	{
+		background-color:#6CADDE;
+	}
+	</style>
+	<body>
+		<img src="/static/KeyBank_logo.png" style="width:230px;height:50px;">
+		<h3>ID : {{ide}}</h3>
+		<h4>Tweet : {{text}}</h4>
+		<table border="1">
+		<tr>
+			<th>Tone Type</th>
+			<th>Tone Name</th>
+			<th>Score%</th>
+		</tr>
+		{% for category in range(0,length) %}
+		<tr>
+			<td rowspan={{toneCategoryName[category].split(',')[1]}}>{{toneCategoryName[category].split(',')[0]}}</td>
+			{% for item in toneCategoryArray[category] %}
+				{% for text in item.split(',')%}
+					<td>{{text}}</td>
+				{% endfor %}
+				</tr>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+		<tr>
+			<th>{{response}}</th>
+		</tr>
+	</body>
+</html>

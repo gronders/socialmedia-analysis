@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+	<style type="text/css">
+	</style>
+	<body>
+	<center>
+	<form action="/posttweet/" method="Post">
+		<h4>User Name : {{tweet.split('::')[0].decode('utf-8')}}</h4>
+		<h4>Tweet : {{tweet.split('::')[1].decode('utf-8')}}</h4>
+		<table border="1">
+		<tr>
+			<th>Tone Type</th>
+			<th>Tone Name</th>
+			<th>Score%</th>
+		</tr>
+		{% for category in range(0,length) %}
+		<tr>
+			<td rowspan={{toneCategoryName[category].split(',')[1]}}>{{toneCategoryName[category].split(',')[0]}}</td>
+			{% for item in toneCategoryArray[category] %}
+				{% for text in item.split(',')%}
+					<td>{{text}}</td>
+				{% endfor %}
+				</tr>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+		<tr>
+		</table>
+		<br>
+		<br>
+		<textarea rows="4" cols="50" name="msg">{{msg}}</textarea>
+		<br>
+		<input type="hidden" value={{tweet.split('::')[2].decode('utf-8')}} name="id">
+		<input type="hidden" value={{tweet.split('::')[0].decode('utf-8')}} name="username">
+		<input type="hidden" value="eybank"} name="name">
+		<input type="submit" value="Post">
+	</form>
+	</center>
+	</body>
+</html>

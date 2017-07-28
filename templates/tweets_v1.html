@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+	<style type="text/css">
+	</style>
+	<body>
+	<a><h2>Tweets</h2></a>
+	<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Tweet</th>
+	</tr>
+	{% for k in range(0,length) %}
+	<tr>
+		<td><a href="http://127.0.0.1:4000/result/{{tweetObjsArray[k].username}}::{{tweetObjsArray[k].tweet}}::{{tweetObjsArray[k].id}}" />{{tweetObjsArray[k].username}}</td>
+		<td>{{tweetObjsArray[k].tweet}}</td>
+	</tr>
+	{% endfor %}
+	</body>
+</html>

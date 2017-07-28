@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+	<style type="text/css">
+	</style>
+	<body>
+	<a><h2>Tweets</h2></a>
+	<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Tweet</th>
+		{% for tone in tones %}
+			<th>{{tone}}</th>
+		{% endfor %}
+	</tr>
+	{% for k in range(0,tweetLen) %}
+	<tr>
+		<td><a href={{tweets[k][2]}} target="_blank"/>{{tweets[k][0]}}</td>
+		<td>{{tweets[k][1]}}</td>
+		{% for tonelen in range(3,toneLen) %}
+			<td>{{tweets[k][tonelen]}}</td>
+		{% endfor %}		
+	</tr>
+	{% endfor %}
+	</body>
+</html>
