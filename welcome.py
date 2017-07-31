@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 from flask import Flask, render_template, request, redirect
 import tweepy
 import keys
@@ -113,3 +112,4 @@ def tweetResponse():
 
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1', port=4000)
+
