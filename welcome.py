@@ -72,7 +72,6 @@ def toneAnalyzer(tweet=None):
         while j<tonesLength:
             tone_Name =  output['document_tone']['tone_categories'][i]['tones'][j]['tone_name']
             score = output['document_tone']['tone_categories'][i]['tones'][j]['score']
-            score = round(score, 4)
             t = tone_Name + "," + str(score*100)
             j+=1
             tonesArray.append(t)
@@ -114,4 +113,3 @@ def tweetResponse():
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=int(port))
-
