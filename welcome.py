@@ -33,12 +33,12 @@ auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
 auth.set_access_token(keys.access_token, keys.access_token_secret)
 api = tweepy.API(auth)
 
-@app.route("/")
-def hello_world():
-    return "Welcome to KeyBank!"
+#@app.route("/")
+#def hello_world():
+#    return "Welcome to KeyBank!"
 
-@app.route("/<name>")
-def welcome(name=None):
+@app.route("/")
+def welcome():
     tweetObjsArray = []
     public_tweets = api.mentions_timeline()
 
