@@ -110,6 +110,5 @@ def tweetResponse():
     url='/'+name
     return redirect('url')
 
-port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=int(port))
+    app.run(debug=True, host='127.0.0.1', port=4000)
