@@ -35,11 +35,11 @@ api = tweepy.API(auth)
 
 @app.route("/")
 def hello_world():
-    return "welcome to keybank"
+    return "Welcome to KeyBank!"
 
 @app.route("/<name>")
 def welcome(name=None):
-	tweetObjsArray = []
+    tweetObjsArray = []
     public_tweets = api.mentions_timeline()
 
     for tweet in public_tweets:
@@ -47,6 +47,7 @@ def welcome(name=None):
         tweetObj = Tweet(tweet.id,tweet.user.screen_name, tweet.text, tweeturl)
         tweetObjsArray.append(tweetObj)
     tweetArrayLen = len(tweetObjsArray)
+	
     return render_template('tweets_v1.html', length=tweetArrayLen, tweetObjsArray=tweetObjsArray)
 
 @app.route("/result/<tweet>", methods = ['GET', 'POST'])
