@@ -32,22 +32,21 @@ app = Flask(__name__)
 auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
 auth.set_access_token(keys.access_token, keys.access_token_secret)
 api = tweepy.API(auth)
+tweetObjsArray = []
+public_tweets = api.mentions_timeline()
+
+for tweet in public_tweets:
+    tweeturl = 'https://twitter.com/'+tweet.user.screen_name+'/status/'+str(tweet.id)
+    tweetObj = Tweet(tweet.id,tweet.user.screen_name, tweet.text, tweeturl)
+    tweetObjsArray.append(tweetObj)
+tweetArrayLen = len(tweetObjsArray)
 
 @app.route("/")
 def hello_world():
     return "Welcome to KeyBank!"
 
 @app.route("/<name>")
-def welcome(name=None):
-    tweetObjsArray = []
-    public_tweets = api.mentions_timeline()
-
-    for tweet in public_tweets:
-        tweeturl = 'https://twitter.com/'+tweet.user.screen_name+'/status/'+str(tweet.id)
-        tweetObj = Tweet(tweet.id,tweet.user.screen_name, tweet.text, tweeturl)
-        tweetObjsArray.append(tweetObj)
-    tweetArrayLen = len(tweetObjsArray)
-	
+def welcome(name=None):	
     return render_template('tweets_v1.html', length=tweetArrayLen, tweetObjsArray=tweetObjsArray)
 
 @app.route("/result/<tweet>", methods = ['GET', 'POST'])
