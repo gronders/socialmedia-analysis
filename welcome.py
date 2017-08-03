@@ -35,7 +35,7 @@ api = tweepy.API(auth)
 
 @app.route("/")
 def hello_world():
-    return "Welcome to KeyBank!"
+    return "welcome to keybank"
 
 @app.route("/<name>")
 def welcome(name=None):
