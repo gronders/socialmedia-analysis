@@ -33,12 +33,6 @@ auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
 auth.set_access_token(keys.access_token, keys.access_token_secret)
 api = tweepy.API(auth)
 
-@app.route("/")
-def hello_world():
-    return "welcome to keybank"
-
-@app.route("/<name>")
-def welcome(name=None):
     tweetObjsArray = []
     public_tweets = api.mentions_timeline()
 
@@ -47,6 +41,13 @@ def welcome(name=None):
         tweetObj = Tweet(tweet.id,tweet.user.screen_name, tweet.text, tweeturl)
         tweetObjsArray.append(tweetObj)
     tweetArrayLen = len(tweetObjsArray)
+
+@app.route("/")
+def hello_world():
+    return "welcome to keybank"
+
+@app.route("/<name>")
+def welcome(name=None):
 	
     return render_template('tweets_v1.html', length=tweetArrayLen, tweetObjsArray=tweetObjsArray)
 
@@ -110,5 +111,6 @@ def tweetResponse():
     url='/'+name
     return redirect('url')
 
+port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
-    app.run(debug=True, host='127.0.0.1', port=4000)
+app.run(host='0.0.0.0', port=int(port))
