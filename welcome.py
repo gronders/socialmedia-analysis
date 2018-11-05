@@ -22,7 +22,7 @@ as Features
 from watson_developer_cloud import ConversationV1
 
 import os
-proxy = 'https://proxy.keybank.com:80'
+proxy = ***************
 os.environ['http_proxy'] = proxy 
 os.environ['https_proxy'] = proxy
 os.environ['HTTP_PROXY'] = proxy
@@ -43,7 +43,7 @@ tweetArrayLen = len(tweetObjsArray)
 
 @app.route("/")
 def hello_world():
-    return "Welcome to KeyBank!"
+    return "Welcome to ******!"
 
 @app.route("/<name>")
 def welcome(name=None):	
@@ -52,9 +52,9 @@ def welcome(name=None):
 @app.route("/result/<tweet>", methods = ['GET', 'POST'])
 def toneAnalyzer(tweet=None):
     tone_analyzer = ToneAnalyzerV3(
-            username='228d1995-d986-4766-84aa-387e0d0978ef',
-            password='mIjxH6u1o8sK',
-            version='2016-02-11')
+            username=************,
+            password=********,
+            version=**********)
 
     text = tweet.split('::')[1].decode('utf-8')
     
@@ -79,12 +79,12 @@ def toneAnalyzer(tweet=None):
         toneCategoryArray.append(tonesArray)
         
         conversation = ConversationV1(
-			username='44155676-ae90-45d0-b2af-d95b4ba0cba8',
-			password='dXCx47VBwLPw',
-			version='2017-05-26'
+			username=************,
+			password=***********,
+			version=*************
 		)
 		
-	workspace_id = '14d740b5-4397-4860-bec9-38aaf91f4f7b'
+	workspace_id = ***************
 
 	response = conversation.message(
 		workspace_id=workspace_id,
